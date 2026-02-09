@@ -44,10 +44,10 @@ const ManageUsers = () => {
 
   return (
     <div className="space-y-6">
-      <h2 className="text-2xl font-bold text-gray-900">Manage Users</h2>
+      <h2 className="text-2xl font-bold font-display text-gray-900">Manage Users</h2>
 
       {/* Filters */}
-      <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-4">
+      <div className="bg-white rounded-2xl shadow-card border border-gray-100/80 p-4">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div className="relative">
             <FiSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
@@ -56,13 +56,13 @@ const ManageUsers = () => {
               placeholder="Search by name, email, or phone..."
               value={search}
               onChange={(e) => { setSearch(e.target.value); setCurrentPage(1); }}
-              className="w-full pl-10 pr-4 py-2.5 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+              className="w-full pl-10 pr-4 py-2.5 input-field"
             />
           </div>
           <select
             value={filterRole}
             onChange={(e) => { setFilterRole(e.target.value); setCurrentPage(1); }}
-            className="px-4 py-2.5 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+            className="input-field"
           >
             <option value="">All Roles</option>
             <option value="user">Users</option>
@@ -73,18 +73,18 @@ const ManageUsers = () => {
 
       {/* Stats */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-4 text-center">
-          <p className="text-2xl font-bold text-gray-900">{users?.length || 0}</p>
+        <div className="bg-white rounded-2xl shadow-card border border-gray-100/80 p-4 text-center">
+          <p className="text-2xl font-bold font-display text-gray-900">{users?.length || 0}</p>
           <p className="text-sm text-gray-500">Total Users</p>
         </div>
-        <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-4 text-center">
-          <p className="text-2xl font-bold text-green-600">
+        <div className="bg-white rounded-2xl shadow-card border border-gray-100/80 p-4 text-center">
+          <p className="text-2xl font-bold font-display text-emerald-600">
             {users?.filter((u) => !u.isBlocked).length || 0}
           </p>
           <p className="text-sm text-gray-500">Active Users</p>
         </div>
-        <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-4 text-center">
-          <p className="text-2xl font-bold text-red-600">
+        <div className="bg-white rounded-2xl shadow-card border border-gray-100/80 p-4 text-center">
+          <p className="text-2xl font-bold font-display text-red-600">
             {users?.filter((u) => u.isBlocked).length || 0}
           </p>
           <p className="text-sm text-gray-500">Blocked Users</p>
@@ -92,10 +92,10 @@ const ManageUsers = () => {
       </div>
 
       {/* Table */}
-      <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+      <div className="bg-white rounded-2xl shadow-card border border-gray-100/80 overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full">
-            <thead className="bg-gray-50">
+            <thead className="bg-surface-50">
               <tr>
                 <th className="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase">User</th>
                 <th className="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase">Phone</th>
@@ -116,7 +116,7 @@ const ManageUsers = () => {
                   >
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-3">
-                        <div className={`w-10 h-10 rounded-full flex items-center justify-center font-semibold text-white ${user.role === 'admin' ? 'bg-purple-500' : 'bg-primary-500'}`}>
+                        <div className={`w-10 h-10 rounded-xl flex items-center justify-center font-semibold text-white ${user.role === 'admin' ? 'bg-gradient-to-br from-violet-500 to-purple-700' : 'bg-gradient-to-br from-primary-500 to-primary-700'}`}>
                           {user.name?.charAt(0).toUpperCase()}
                         </div>
                         <div>
@@ -195,7 +195,7 @@ const ManageUsers = () => {
                 <button
                   key={page}
                   onClick={() => setCurrentPage(page)}
-                  className={`w-9 h-9 rounded-lg text-sm font-medium ${page === currentPage ? 'bg-primary-500 text-white' : 'border border-gray-200 hover:bg-gray-50'}`}
+                  className={`w-9 h-9 rounded-xl text-sm font-medium ${page === currentPage ? 'bg-gradient-to-r from-primary-500 to-primary-600 text-white shadow-glow-sm' : 'border border-gray-200 hover:bg-gray-50'}`}
                 >
                   {page}
                 </button>

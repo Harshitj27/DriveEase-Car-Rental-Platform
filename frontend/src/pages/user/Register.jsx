@@ -33,25 +33,27 @@ const Register = () => {
 
   return (
     <div className="min-h-screen flex">
-      <div className="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-primary-900 via-primary-800 to-primary-700 items-center justify-center p-12">
-        <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }} className="max-w-md text-center">
-          <div className="text-8xl mb-8">🎉</div>
-          <h2 className="text-3xl font-bold text-white mb-4">Join DriveEase</h2>
-          <p className="text-primary-200 text-lg">Create your account and start renting cars across India in minutes.</p>
+      <div className="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-primary-950 via-primary-900 to-surface-950 items-center justify-center p-12 relative overflow-hidden">
+        <div className="absolute top-20 left-20 w-60 h-60 bg-accent-500/15 rounded-full blur-3xl" />
+        <div className="absolute bottom-20 right-20 w-40 h-40 bg-primary-500/20 rounded-full blur-3xl" />
+        <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }} className="relative max-w-md text-center">
+          <div className="text-8xl mb-8 animate-float">🎉</div>
+          <h2 className="text-3xl font-bold font-display text-white mb-4">Join DriveEase</h2>
+          <p className="text-primary-200/80 text-lg">Create your account and start renting cars across India in minutes.</p>
         </motion.div>
       </div>
 
-      <div className="w-full lg:w-1/2 flex items-center justify-center p-6 sm:p-12">
+      <div className="w-full lg:w-1/2 flex items-center justify-center p-6 sm:p-12 bg-surface-50">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="w-full max-w-md">
-          <Link to="/" className="flex items-center gap-2 mb-8">
-            <div className="bg-primary-500 p-2 rounded-lg"><FaCar className="text-white" /></div>
-            <span className="text-xl font-bold text-primary-700">DriveEase</span>
+          <Link to="/" className="flex items-center gap-2.5 mb-8">
+            <div className="bg-gradient-to-br from-primary-600 to-primary-400 p-2 rounded-xl shadow-glow-sm"><FaCar className="text-white" /></div>
+            <span className="text-xl font-bold font-display gradient-text">DriveEase</span>
           </Link>
 
-          <h1 className="text-2xl font-bold text-gray-900 mb-2">Create your account</h1>
+          <h1 className="text-2xl font-bold font-display text-gray-900 mb-2">Create your account</h1>
           <p className="text-gray-500 mb-8">Start your journey with DriveEase</p>
 
-          {error && <div className="bg-red-50 text-red-600 p-3 rounded-lg text-sm mb-4 border border-red-200">{error}</div>}
+          {error && <div className="bg-red-50 text-red-600 p-3 rounded-xl text-sm mb-4 border border-red-200">{error}</div>}
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
@@ -97,7 +99,7 @@ const Register = () => {
 
           <p className="mt-6 text-center text-gray-500 text-sm">
             Already have an account?{' '}
-            <Link to="/login" className="text-primary-600 font-semibold hover:underline">Sign in</Link>
+            <Link to="/login" className="text-primary-600 font-semibold hover:text-primary-700 transition-colors">Sign in</Link>
           </p>
         </motion.div>
       </div>

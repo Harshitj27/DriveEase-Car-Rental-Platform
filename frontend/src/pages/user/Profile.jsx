@@ -28,31 +28,34 @@ const Profile = () => {
   };
 
   return (
-    <div className="max-w-2xl mx-auto px-4 sm:px-6 py-8">
+    <div className="max-w-2xl mx-auto px-4 sm:px-6 py-10">
       <div className="flex items-center justify-between mb-8">
-        <h1 className="text-3xl font-bold text-gray-900">My Profile</h1>
+        <h1 className="text-3xl font-bold font-display text-gray-900">My Profile</h1>
         {!editing && (
           <button
             onClick={() => setEditing(true)}
-            className="flex items-center gap-2 px-4 py-2 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition-colors text-sm font-medium"
+            className="flex items-center gap-2 px-4 py-2 btn-primary text-sm"
           >
             <FaEdit /> Edit Profile
           </button>
         )}
       </div>
 
-      <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
-        <div className="bg-gradient-to-r from-primary-700 to-primary-500 p-8 text-center">
-          <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto shadow-lg">
-            <span className="text-3xl font-bold text-primary-700">{user?.name?.charAt(0)?.toUpperCase()}</span>
+      <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="bg-white rounded-2xl shadow-card border border-gray-100/80 overflow-hidden">
+        <div className="bg-gradient-to-r from-primary-700 via-primary-600 to-primary-500 p-8 text-center relative overflow-hidden">
+          <div className="absolute inset-0 bg-hero-pattern opacity-20" />
+          <div className="relative">
+            <div className="w-20 h-20 bg-white rounded-2xl flex items-center justify-center mx-auto shadow-xl">
+              <span className="text-3xl font-bold gradient-text">{user?.name?.charAt(0)?.toUpperCase()}</span>
+            </div>
+            <h2 className="text-xl font-bold font-display text-white mt-3">{user?.name}</h2>
+            <span className="inline-block mt-1 bg-white/20 text-white text-xs px-3 py-0.5 rounded-full capitalize backdrop-blur-sm border border-white/10">{user?.role}</span>
           </div>
-          <h2 className="text-xl font-bold text-white mt-3">{user?.name}</h2>
-          <span className="inline-block mt-1 bg-white/20 text-white text-xs px-3 py-0.5 rounded-full capitalize">{user?.role}</span>
         </div>
 
-        <div className="p-6 space-y-5">
-          <div className="flex items-center gap-4 p-4 bg-gray-50 rounded-xl">
-            <div className="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center">
+        <div className="p-6 space-y-4">
+          <div className="flex items-center gap-4 p-4 bg-surface-50 rounded-xl border border-gray-100">
+            <div className="w-10 h-10 bg-gradient-to-br from-primary-100 to-primary-50 rounded-xl flex items-center justify-center">
               <FaUser className="text-primary-600" />
             </div>
             <div>
@@ -61,8 +64,8 @@ const Profile = () => {
             </div>
           </div>
 
-          <div className="flex items-center gap-4 p-4 bg-gray-50 rounded-xl">
-            <div className="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center">
+          <div className="flex items-center gap-4 p-4 bg-surface-50 rounded-xl border border-gray-100">
+            <div className="w-10 h-10 bg-gradient-to-br from-primary-100 to-primary-50 rounded-xl flex items-center justify-center">
               <FaEnvelope className="text-primary-600" />
             </div>
             <div>
@@ -71,8 +74,8 @@ const Profile = () => {
             </div>
           </div>
 
-          <div className="flex items-center gap-4 p-4 bg-gray-50 rounded-xl">
-            <div className="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center">
+          <div className="flex items-center gap-4 p-4 bg-surface-50 rounded-xl border border-gray-100">
+            <div className="w-10 h-10 bg-gradient-to-br from-primary-100 to-primary-50 rounded-xl flex items-center justify-center">
               <FaPhone className="text-primary-600" />
             </div>
             <div>
@@ -81,8 +84,8 @@ const Profile = () => {
             </div>
           </div>
 
-          <div className="flex items-center gap-4 p-4 bg-gray-50 rounded-xl">
-            <div className="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center">
+          <div className="flex items-center gap-4 p-4 bg-surface-50 rounded-xl border border-gray-100">
+            <div className="w-10 h-10 bg-gradient-to-br from-primary-100 to-primary-50 rounded-xl flex items-center justify-center">
               <FaCalendar className="text-primary-600" />
             </div>
             <div>
@@ -99,41 +102,41 @@ const Profile = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           onSubmit={handleSubmit}
-          className="mt-6 bg-white rounded-2xl shadow-sm border border-gray-100 p-6 space-y-4"
+          className="mt-6 bg-white rounded-2xl shadow-card border border-gray-100/80 p-6 space-y-4"
         >
-          <h3 className="text-lg font-semibold text-gray-900">Edit Profile</h3>
+          <h3 className="text-lg font-semibold font-display text-gray-900">Edit Profile</h3>
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+            <label className="block text-sm font-medium text-gray-700 mb-1.5">Full Name</label>
             <input
               type="text"
               value={form.name}
               onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
-              className="w-full px-4 py-2.5 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+              className="input-field"
               required
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
+            <label className="block text-sm font-medium text-gray-700 mb-1.5">Phone Number</label>
             <input
               type="text"
               value={form.phoneNumber}
               onChange={(e) => setForm((f) => ({ ...f, phoneNumber: e.target.value }))}
               placeholder="10-digit mobile number"
-              className="w-full px-4 py-2.5 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+              className="input-field"
             />
           </div>
           <div className="flex gap-3 pt-2">
             <button
               type="button"
               onClick={() => setEditing(false)}
-              className="flex items-center gap-2 px-4 py-2 border border-gray-200 text-gray-700 rounded-lg hover:bg-gray-50 text-sm font-medium"
+              className="btn-secondary flex items-center gap-2 text-sm"
             >
               <FaTimes /> Cancel
             </button>
             <button
               type="submit"
               disabled={loading}
-              className="flex items-center gap-2 px-4 py-2 bg-primary-500 text-white rounded-lg hover:bg-primary-600 text-sm font-medium disabled:opacity-50"
+              className="btn-primary flex items-center gap-2 text-sm disabled:opacity-50"
             >
               <FaSave /> {loading ? 'Saving...' : 'Save Changes'}
             </button>

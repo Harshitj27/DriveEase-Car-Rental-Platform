@@ -33,13 +33,13 @@ const Cars = () => {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 py-10">
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-900">Browse Cars</h1>
+        <h1 className="text-3xl font-bold font-display text-gray-900">Browse Cars</h1>
         <p className="text-gray-500 mt-1">{pagination.total} cars available across India</p>
       </div>
 
-      <div className="lg:flex gap-6">
+      <div className="lg:flex gap-8">
         {/* Filters Sidebar */}
         <div className="lg:w-72 flex-shrink-0">
           <SearchFilters />
@@ -66,10 +66,10 @@ const Cars = () => {
                     <button
                       key={i}
                       onClick={() => handlePageChange(i + 1)}
-                      className={`w-10 h-10 rounded-lg font-medium text-sm transition-colors ${
+                      className={`w-10 h-10 rounded-xl font-medium text-sm transition-all duration-300 ${
                         pagination.page === i + 1
-                          ? 'bg-primary-500 text-white'
-                          : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-200'
+                          ? 'bg-gradient-to-r from-primary-600 to-primary-500 text-white shadow-glow-sm'
+                          : 'bg-white text-gray-700 hover:bg-gray-50 border border-gray-200 hover:border-primary-300'
                       }`}
                     >
                       {i + 1}
@@ -80,8 +80,8 @@ const Cars = () => {
             </>
           ) : (
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center py-20">
-              <FaCar className="text-6xl text-gray-300 mx-auto mb-4" />
-              <h3 className="text-xl font-semibold text-gray-600">No cars found</h3>
+              <FaCar className="text-6xl text-gray-200 mx-auto mb-4" />
+              <h3 className="text-xl font-semibold font-display text-gray-600">No cars found</h3>
               <p className="text-gray-400 mt-2">Try adjusting your filters or search criteria</p>
             </motion.div>
           )}

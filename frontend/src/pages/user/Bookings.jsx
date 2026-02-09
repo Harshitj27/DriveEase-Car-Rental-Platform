@@ -29,13 +29,13 @@ const Bookings = () => {
   if (loading) return <Loader text="Loading bookings..." />;
 
   return (
-    <div className="max-w-5xl mx-auto px-4 sm:px-6 py-8">
-      <h1 className="text-3xl font-bold text-gray-900 mb-8">My Bookings</h1>
+    <div className="max-w-5xl mx-auto px-4 sm:px-6 py-10">
+      <h1 className="text-3xl font-bold font-display text-gray-900 mb-8">My Bookings</h1>
 
       {bookings.length === 0 ? (
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center py-20">
-          <FaCar className="text-6xl text-gray-300 mx-auto mb-4" />
-          <h3 className="text-xl font-semibold text-gray-600">No bookings yet</h3>
+          <FaCar className="text-6xl text-gray-200 mx-auto mb-4" />
+          <h3 className="text-xl font-semibold font-display text-gray-600">No bookings yet</h3>
           <p className="text-gray-400 mt-2">Start by browsing cars and making your first booking</p>
         </motion.div>
       ) : (
@@ -46,7 +46,7 @@ const Bookings = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: idx * 0.05 }}
-              className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden"
+              className="bg-white rounded-2xl shadow-card border border-gray-100/80 overflow-hidden hover:shadow-card-hover transition-all duration-300"
             >
               <div className="sm:flex">
                 <div className="sm:w-48 h-32 sm:h-auto flex-shrink-0">
@@ -59,7 +59,7 @@ const Bookings = () => {
                 <div className="flex-1 p-4 sm:p-5">
                   <div className="flex flex-wrap items-start justify-between gap-2">
                     <div>
-                      <h3 className="font-bold text-gray-900 text-lg">{booking.car?.brand} {booking.car?.name}</h3>
+                      <h3 className="font-bold font-display text-gray-900 text-lg">{booking.car?.brand} {booking.car?.name}</h3>
                       <p className="text-sm text-gray-500">{booking.pickupCity} • {booking.car?.category}</p>
                     </div>
                     <div className="flex gap-2">
@@ -74,14 +74,14 @@ const Bookings = () => {
 
                   <div className="flex flex-wrap gap-4 mt-3 text-sm text-gray-600">
                     <span className="flex items-center gap-1"><FaCalendar className="text-primary-500" /> {formatDate(booking.pickupDate)} → {formatDate(booking.dropDate)}</span>
-                    <span className="font-bold text-primary-700">{formatINR(booking.totalAmount)}</span>
+                    <span className="font-bold gradient-text">{formatINR(booking.totalAmount)}</span>
                     <span className="text-gray-400">{booking.totalDays} day{booking.totalDays > 1 ? 's' : ''}</span>
                   </div>
 
                   <div className="flex items-center gap-3 mt-4">
                     <p className="text-xs text-gray-400">ID: {booking._id?.slice(-8)}</p>
                     {['pending', 'confirmed'].includes(booking.bookingStatus) && (
-                      <button onClick={() => handleCancel(booking._id)} className="flex items-center gap-1 text-sm text-red-500 hover:text-red-700 font-medium">
+                      <button onClick={() => handleCancel(booking._id)} className="flex items-center gap-1 text-sm text-red-500 hover:text-red-700 font-medium transition-colors">
                         <FaTimes className="text-xs" /> Cancel
                       </button>
                     )}

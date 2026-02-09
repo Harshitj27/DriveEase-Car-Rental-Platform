@@ -53,17 +53,17 @@ const ManageCars = () => {
     <div className="space-y-6">
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-        <h2 className="text-2xl font-bold text-gray-900">Manage Cars</h2>
+        <h2 className="text-2xl font-bold font-display text-gray-900">Manage Cars</h2>
         <Link
           to="/admin/cars/add"
-          className="inline-flex items-center gap-2 px-4 py-2.5 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition-colors font-medium"
+          className="inline-flex items-center gap-2 px-4 py-2.5 btn-primary font-medium"
         >
           <FiPlus /> Add New Car
         </Link>
       </div>
 
       {/* Filters */}
-      <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-4">
+      <div className="bg-white rounded-2xl shadow-card border border-gray-100/80 p-4">
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           <div className="relative">
             <FiSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
@@ -72,13 +72,13 @@ const ManageCars = () => {
               placeholder="Search by name or brand..."
               value={search}
               onChange={(e) => { setSearch(e.target.value); setCurrentPage(1); }}
-              className="w-full pl-10 pr-4 py-2.5 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+              className="w-full pl-10 pr-4 py-2.5 input-field"
             />
           </div>
           <select
             value={filterCity}
             onChange={(e) => { setFilterCity(e.target.value); setCurrentPage(1); }}
-            className="px-4 py-2.5 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+            className="input-field"
           >
             <option value="">All Cities</option>
             {cities.map((c) => <option key={c} value={c}>{c}</option>)}
@@ -86,7 +86,7 @@ const ManageCars = () => {
           <select
             value={filterCategory}
             onChange={(e) => { setFilterCategory(e.target.value); setCurrentPage(1); }}
-            className="px-4 py-2.5 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+            className="input-field"
           >
             <option value="">All Categories</option>
             {categories.map((c) => <option key={c} value={c}>{c}</option>)}
@@ -95,10 +95,10 @@ const ManageCars = () => {
       </div>
 
       {/* Table */}
-      <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+      <div className="bg-white rounded-2xl shadow-card border border-gray-100/80 overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full">
-            <thead className="bg-gray-50">
+            <thead className="bg-surface-50">
               <tr>
                 <th className="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase">Car</th>
                 <th className="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase">Category</th>
@@ -193,7 +193,7 @@ const ManageCars = () => {
                 <button
                   key={page}
                   onClick={() => setCurrentPage(page)}
-                  className={`w-9 h-9 rounded-lg text-sm font-medium ${page === currentPage ? 'bg-primary-500 text-white' : 'border border-gray-200 hover:bg-gray-50'}`}
+                  className={`w-9 h-9 rounded-xl text-sm font-medium ${page === currentPage ? 'bg-gradient-to-r from-primary-500 to-primary-600 text-white shadow-glow-sm' : 'border border-gray-200 hover:bg-gray-50'}`}
                 >
                   {page}
                 </button>
@@ -225,22 +225,22 @@ const ManageCars = () => {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.95, opacity: 0 }}
               onClick={(e) => e.stopPropagation()}
-              className="bg-white rounded-xl p-6 max-w-sm w-full shadow-2xl"
+              className="bg-white rounded-2xl p-6 max-w-sm w-full shadow-2xl"
             >
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Delete Car</h3>
+              <h3 className="text-lg font-semibold font-display text-gray-900 mb-2">Delete Car</h3>
               <p className="text-gray-600 mb-6">
                 Are you sure you want to delete <strong>{deleteModal.brand} {deleteModal.name}</strong>? This action cannot be undone.
               </p>
               <div className="flex gap-3 justify-end">
                 <button
                   onClick={() => setDeleteModal(null)}
-                  className="px-4 py-2 border border-gray-200 text-gray-700 rounded-lg hover:bg-gray-50"
+                  className="px-4 py-2 border border-gray-200 text-gray-700 rounded-xl hover:bg-gray-50 transition-colors"
                 >
                   Cancel
                 </button>
                 <button
                   onClick={handleDelete}
-                  className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600"
+                  className="px-4 py-2 bg-red-500 text-white rounded-xl hover:bg-red-600 transition-colors"
                 >
                   Delete
                 </button>

@@ -11,14 +11,14 @@ const StatCard = ({ title, value, icon: Icon, color, delay }) => (
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ delay }}
-    className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition-shadow"
+    className="bg-white rounded-2xl shadow-card border border-gray-100/80 p-6 hover:shadow-card-hover transition-all duration-300"
   >
     <div className="flex items-center justify-between">
       <div>
         <p className="text-sm text-gray-500 font-medium">{title}</p>
-        <p className="text-2xl font-bold text-gray-900 mt-1">{value}</p>
+        <p className="text-2xl font-bold font-display text-gray-900 mt-1">{value}</p>
       </div>
-      <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${color}`}>
+      <div className={`w-12 h-12 rounded-2xl flex items-center justify-center ${color}`}>
         <Icon className="w-6 h-6 text-white" />
       </div>
     </div>
@@ -54,10 +54,10 @@ const Dashboard = () => {
   const { totalUsers, totalCars, totalBookings, totalRevenue, recentBookings, bookingsByStatus, mostRentedCar, monthlyRevenue } = dashboardStats;
 
   const stats = [
-    { title: 'Total Revenue', value: formatINR(totalRevenue || 0), icon: FiDollarSign, color: 'bg-green-500' },
-    { title: 'Total Bookings', value: totalBookings || 0, icon: FiCalendar, color: 'bg-primary-500' },
-    { title: 'Total Cars', value: totalCars || 0, icon: FiTruck, color: 'bg-orange-500' },
-    { title: 'Total Users', value: totalUsers || 0, icon: FiUsers, color: 'bg-purple-500' },
+    { title: 'Total Revenue', value: formatINR(totalRevenue || 0), icon: FiDollarSign, color: 'bg-gradient-to-br from-emerald-500 to-green-600' },
+    { title: 'Total Bookings', value: totalBookings || 0, icon: FiCalendar, color: 'bg-gradient-to-br from-primary-500 to-primary-700' },
+    { title: 'Total Cars', value: totalCars || 0, icon: FiTruck, color: 'bg-gradient-to-br from-amber-500 to-orange-600' },
+    { title: 'Total Users', value: totalUsers || 0, icon: FiUsers, color: 'bg-gradient-to-br from-violet-500 to-purple-700' },
   ];
 
   const maxRevenue = monthlyRevenue ? Math.max(...monthlyRevenue.map((m) => m.revenue), 1) : 1;
@@ -77,9 +77,9 @@ const Dashboard = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4 }}
-          className="lg:col-span-2 bg-white rounded-xl shadow-sm border border-gray-100 p-6"
+          className="lg:col-span-2 bg-white rounded-2xl shadow-card border border-gray-100/80 p-6"
         >
-          <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
+          <h3 className="text-lg font-semibold font-display text-gray-900 mb-4 flex items-center gap-2">
             <FiTrendingUp className="text-primary-500" /> Monthly Revenue
           </h3>
           {monthlyRevenue && monthlyRevenue.length > 0 ? (
@@ -109,9 +109,9 @@ const Dashboard = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5 }}
-          className="bg-white rounded-xl shadow-sm border border-gray-100 p-6"
+          className="bg-white rounded-2xl shadow-card border border-gray-100/80 p-6"
         >
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">Bookings by Status</h3>
+          <h3 className="text-lg font-semibold font-display text-gray-900 mb-4">Bookings by Status</h3>
           <div className="space-y-3">
             {bookingsByStatus && bookingsByStatus.length > 0 ? (
               bookingsByStatus.map((item) => (
@@ -140,14 +140,14 @@ const Dashboard = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.6 }}
-        className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden"
+        className="bg-white rounded-2xl shadow-card border border-gray-100/80 overflow-hidden"
       >
-        <div className="p-6 border-b border-gray-100">
-          <h3 className="text-lg font-semibold text-gray-900">Recent Bookings</h3>
+        <div className="p-6 border-b border-gray-100/80">
+          <h3 className="text-lg font-semibold font-display text-gray-900">Recent Bookings</h3>
         </div>
         <div className="overflow-x-auto">
           <table className="w-full">
-            <thead className="bg-gray-50">
+            <thead className="bg-surface-50">
               <tr>
                 <th className="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase">Booking ID</th>
                 <th className="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase">Customer</th>

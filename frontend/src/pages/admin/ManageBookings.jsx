@@ -76,10 +76,10 @@ const ManageBookings = () => {
 
   return (
     <div className="space-y-6">
-      <h2 className="text-2xl font-bold text-gray-900">Manage Bookings</h2>
+      <h2 className="text-2xl font-bold font-display text-gray-900">Manage Bookings</h2>
 
       {/* Filters */}
-      <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-4">
+      <div className="bg-white rounded-2xl shadow-card border border-gray-100/80 p-4">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div className="relative">
             <FiSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
@@ -88,13 +88,13 @@ const ManageBookings = () => {
               placeholder="Search by customer, car, or booking ID..."
               value={search}
               onChange={(e) => { setSearch(e.target.value); setCurrentPage(1); }}
-              className="w-full pl-10 pr-4 py-2.5 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+              className="w-full pl-10 pr-4 py-2.5 input-field"
             />
           </div>
           <select
             value={filterStatus}
             onChange={(e) => { setFilterStatus(e.target.value); setCurrentPage(1); }}
-            className="px-4 py-2.5 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+            className="input-field"
           >
             <option value="">All Status</option>
             <option value="pending">Pending</option>
@@ -106,10 +106,10 @@ const ManageBookings = () => {
       </div>
 
       {/* Table */}
-      <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+      <div className="bg-white rounded-2xl shadow-card border border-gray-100/80 overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full">
-            <thead className="bg-gray-50">
+            <thead className="bg-surface-50">
               <tr>
                 <th className="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase">Booking ID</th>
                 <th className="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase">Customer</th>
@@ -214,7 +214,7 @@ const ManageBookings = () => {
                 <button
                   key={page}
                   onClick={() => setCurrentPage(page)}
-                  className={`w-9 h-9 rounded-lg text-sm font-medium ${page === currentPage ? 'bg-primary-500 text-white' : 'border border-gray-200 hover:bg-gray-50'}`}
+                  className={`w-9 h-9 rounded-xl text-sm font-medium ${page === currentPage ? 'bg-gradient-to-r from-primary-500 to-primary-600 text-white shadow-glow-sm' : 'border border-gray-200 hover:bg-gray-50'}`}
                 >
                   {page}
                 </button>
@@ -246,9 +246,9 @@ const ManageBookings = () => {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.95, opacity: 0 }}
               onClick={(e) => e.stopPropagation()}
-              className="bg-white rounded-xl p-6 max-w-lg w-full shadow-2xl max-h-[80vh] overflow-y-auto"
+              className="bg-white rounded-2xl p-6 max-w-lg w-full shadow-2xl max-h-[80vh] overflow-y-auto"
             >
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">
+              <h3 className="text-lg font-semibold font-display text-gray-900 mb-4">
                 Booking #{detailModal._id.slice(-6).toUpperCase()}
               </h3>
               <div className="space-y-3 text-sm">
@@ -303,7 +303,7 @@ const ManageBookings = () => {
               <div className="flex justify-end mt-6">
                 <button
                   onClick={() => setDetailModal(null)}
-                  className="px-4 py-2 border border-gray-200 text-gray-700 rounded-lg hover:bg-gray-50"
+                  className="px-4 py-2 border border-gray-200 text-gray-700 rounded-xl hover:bg-gray-50 transition-colors"
                 >
                   Close
                 </button>

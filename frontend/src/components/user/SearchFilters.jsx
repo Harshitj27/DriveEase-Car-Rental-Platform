@@ -133,8 +133,8 @@ const SearchFilters = () => {
 
       {/* Desktop Sidebar */}
       <div className="hidden lg:block">
-        <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 sticky top-24">
-          <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2"><FaFilter className="text-primary-500" /> Filters</h3>
+        <div className="bg-white rounded-2xl p-6 shadow-card border border-gray-100/80 sticky top-24">
+          <h3 className="text-lg font-bold font-display text-gray-900 mb-4 flex items-center gap-2"><FaFilter className="text-primary-500" /> Filters</h3>
           <FilterContent />
         </div>
       </div>

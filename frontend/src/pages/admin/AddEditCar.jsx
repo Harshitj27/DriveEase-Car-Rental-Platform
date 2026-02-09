@@ -150,8 +150,8 @@ const AddEditCar = () => {
         <FiArrowLeft /> Back to Cars
       </button>
 
-      <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 md:p-8">
-        <h2 className="text-2xl font-bold text-gray-900 mb-6">
+      <div className="bg-white rounded-2xl shadow-card border border-gray-100/80 p-6 md:p-8">
+        <h2 className="text-2xl font-bold font-display text-gray-900 mb-6">
           {isEdit ? 'Edit Car' : 'Add New Car'}
         </h2>
 
@@ -159,24 +159,24 @@ const AddEditCar = () => {
           {/* Basic Info */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Car Name *</label>
+              <label className="block text-sm font-medium text-gray-700 mb-1.5">Car Name *</label>
               <input
                 type="text"
                 name="name"
                 value={form.name}
                 onChange={handleChange}
                 placeholder="e.g. Swift, Creta, Nexon"
-                className="w-full px-4 py-2.5 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                className="input-field"
                 required
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Brand *</label>
+              <label className="block text-sm font-medium text-gray-700 mb-1.5">Brand *</label>
               <select
                 name="brand"
                 value={form.brand}
                 onChange={handleChange}
-                className="w-full px-4 py-2.5 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                className="input-field"
                 required
               >
                 <option value="">Select Brand</option>
@@ -184,12 +184,12 @@ const AddEditCar = () => {
               </select>
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Category *</label>
+              <label className="block text-sm font-medium text-gray-700 mb-1.5">Category *</label>
               <select
                 name="category"
                 value={form.category}
                 onChange={handleChange}
-                className="w-full px-4 py-2.5 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                className="input-field"
                 required
               >
                 <option value="">Select Category</option>
@@ -197,12 +197,12 @@ const AddEditCar = () => {
               </select>
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">City *</label>
+              <label className="block text-sm font-medium text-gray-700 mb-1.5">City *</label>
               <select
                 name="city"
                 value={form.city}
                 onChange={handleChange}
-                className="w-full px-4 py-2.5 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                className="input-field"
                 required
               >
                 <option value="">Select City</option>
@@ -214,7 +214,7 @@ const AddEditCar = () => {
           {/* Specs */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Price/Day (₹) *</label>
+              <label className="block text-sm font-medium text-gray-700 mb-1.5">Price/Day (₹) *</label>
               <input
                 type="number"
                 name="pricePerDay"
@@ -222,34 +222,34 @@ const AddEditCar = () => {
                 onChange={handleChange}
                 placeholder="e.g. 1500"
                 min="100"
-                className="w-full px-4 py-2.5 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                className="input-field"
                 required
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Fuel Type</label>
+              <label className="block text-sm font-medium text-gray-700 mb-1.5">Fuel Type</label>
               <select
                 name="fuelType"
                 value={form.fuelType}
                 onChange={handleChange}
-                className="w-full px-4 py-2.5 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                className="input-field"
               >
                 {fuelTypes.map((f) => <option key={f} value={f}>{f}</option>)}
               </select>
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Transmission</label>
+              <label className="block text-sm font-medium text-gray-700 mb-1.5">Transmission</label>
               <select
                 name="transmission"
                 value={form.transmission}
                 onChange={handleChange}
-                className="w-full px-4 py-2.5 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                className="input-field"
               >
                 {transmissionTypes.map((t) => <option key={t} value={t}>{t}</option>)}
               </select>
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Seats</label>
+              <label className="block text-sm font-medium text-gray-700 mb-1.5">Seats</label>
               <input
                 type="number"
                 name="seats"
@@ -257,32 +257,32 @@ const AddEditCar = () => {
                 onChange={handleChange}
                 min="2"
                 max="12"
-                className="w-full px-4 py-2.5 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                className="input-field"
               />
             </div>
           </div>
 
           {/* Description & Features */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Description</label>
+            <label className="block text-sm font-medium text-gray-700 mb-1.5">Description</label>
             <textarea
               name="description"
               value={form.description}
               onChange={handleChange}
               rows="3"
               placeholder="Brief description of the car..."
-              className="w-full px-4 py-2.5 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent resize-none"
+              className="input-field resize-none"
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Features (comma-separated)</label>
+            <label className="block text-sm font-medium text-gray-700 mb-1.5">Features (comma-separated)</label>
             <input
               type="text"
               name="features"
               value={form.features}
               onChange={handleChange}
               placeholder="AC, Power Steering, Music System, GPS"
-              className="w-full px-4 py-2.5 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+              className="input-field"
             />
           </div>
 
@@ -305,7 +305,7 @@ const AddEditCar = () => {
             </label>
             <div className="flex flex-wrap gap-3">
               {existingImages.map((img, i) => (
-                <div key={`existing-${i}`} className="relative w-24 h-24 rounded-lg overflow-hidden border-2 border-gray-200">
+                <div key={`existing-${i}`} className="relative w-24 h-24 rounded-xl overflow-hidden border-2 border-gray-200">
                   <img src={img.url} alt="" className="w-full h-full object-cover" />
                   <button
                     type="button"
@@ -317,7 +317,7 @@ const AddEditCar = () => {
                 </div>
               ))}
               {previewUrls.map((url, i) => (
-                <div key={`new-${i}`} className="relative w-24 h-24 rounded-lg overflow-hidden border-2 border-primary-300">
+                <div key={`new-${i}`} className="relative w-24 h-24 rounded-xl overflow-hidden border-2 border-primary-300">
                   <img src={url} alt="" className="w-full h-full object-cover" />
                   <button
                     type="button"
@@ -329,7 +329,7 @@ const AddEditCar = () => {
                 </div>
               ))}
               {existingImages.length + images.length < 5 && (
-                <label className="w-24 h-24 border-2 border-dashed border-gray-300 rounded-lg flex flex-col items-center justify-center cursor-pointer hover:border-primary-500 hover:bg-primary-50 transition-colors">
+                <label className="w-24 h-24 border-2 border-dashed border-gray-300 rounded-xl flex flex-col items-center justify-center cursor-pointer hover:border-primary-500 hover:bg-primary-50 transition-colors">
                   <FiUpload className="w-5 h-5 text-gray-400" />
                   <span className="text-[10px] text-gray-400 mt-1">Upload</span>
                   <input
@@ -349,14 +349,14 @@ const AddEditCar = () => {
             <button
               type="button"
               onClick={() => navigate('/admin/cars')}
-              className="px-6 py-2.5 border border-gray-200 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors font-medium"
+              className="btn-secondary px-6 py-2.5 font-medium"
             >
               Cancel
             </button>
             <button
               type="submit"
               disabled={submitting}
-              className="flex items-center gap-2 px-6 py-2.5 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition-colors font-medium disabled:opacity-50"
+              className="flex items-center gap-2 btn-primary px-6 py-2.5 font-medium disabled:opacity-50"
             >
               <FiSave />
               {submitting ? 'Saving...' : isEdit ? 'Update Car' : 'Add Car'}
