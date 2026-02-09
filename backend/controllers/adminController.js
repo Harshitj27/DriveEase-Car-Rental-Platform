@@ -106,7 +106,11 @@ const addCar = async (req, res, next) => {
       seats,
       images,
       description: description || '',
-      features: features ? (typeof features === 'string' ? JSON.parse(features) : features) : [],
+      features: features
+        ? typeof features === 'string'
+          ? (() => { try { return JSON.parse(features); } catch { return features.split(',').map((f) => f.trim()).filter(Boolean); } })()
+          : features
+        : [],
       mileage: mileage || '',
       year: year || new Date().getFullYear(),
       rating: rating || 4.0,
@@ -133,7 +137,22 @@ const updateCar = async (req, res, next) => {
 
     const updates = { ...req.body };
     if (updates.features && typeof updates.features === 'string') {
-      updates.features = JSON.parse(updates.features);
+      try {
+        updates.features = JSON.parse(updates.features);
+      } catch {
+        updates.features = updates.features.split(',').map((f) => f.trim()).filter(Boolean);
+      }
+    }
+
+    // Handle existing images sent from frontend (user may have removed some)
+    let keptImages = car.images;
+    if (updates.existingImages) {
+      try {
+        keptImages = JSON.parse(updates.existingImages);
+      } catch {
+        keptImages = car.images;
+      }
+      delete updates.existingImages;
     }
 
     if (req.files && req.files.length > 0) {
@@ -141,7 +160,9 @@ const updateCar = async (req, res, next) => {
         url: file.path,
         publicId: file.filename,
       }));
-      updates.images = [...car.images, ...newImages];
+      updates.images = [...keptImages, ...newImages];
+    } else {
+      updates.images = keptImages;
     }
 
     const updatedCar = await Car.findByIdAndUpdate(req.params.id, updates, {
